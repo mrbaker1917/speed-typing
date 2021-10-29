@@ -8,6 +8,7 @@ function App() {
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [wordCount, setWordCount] = useState(0)
 
+
   function handleChange(e) {
     const { value } = e.target;
 
@@ -46,9 +47,9 @@ function App() {
   return (
     <div>
       <h1>Speed Typing Game: How fast can you type?</h1>
-      <textarea value={typetext} onChange={handleChange} />
+      <textarea value={typetext} onChange={handleChange} disabled={!isTimeRunning} />
       <h4>Time Remaining: {timeRemaining}</h4>
-      <button onClick={() => startGame()}>Start</button>
+      <button onClick={() => startGame()} disabled={isTimeRunning}>Start</button>
       <h1>Word Count: {wordCount}</h1>
     </div>
   );
