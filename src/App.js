@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 function App() {
-  const STARTING_TIME = 5
+  const STARTING_TIME = 20
   const [typetext, updateTypetext] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [wordCount, setWordCount] = useState(0)
+  const textFocus = useRef()
 
 
   function handleChange(e) {
@@ -36,6 +37,7 @@ function App() {
 
   useEffect(() => {
     if (isTimeRunning && timeRemaining > 0) {
+      textFocus.current.focus()
       setTimeout(() => {
         setTimeRemaining((time) => time - 1);
       }, 1000);
@@ -47,7 +49,7 @@ function App() {
   return (
     <div>
       <h1>Speed Typing Game: How fast can you type?</h1>
-      <textarea value={typetext} onChange={handleChange} disabled={!isTimeRunning} />
+      <textarea value={typetext} onChange={handleChange} disabled={!isTimeRunning} ref={textFocus} />
       <h4>Time Remaining: {timeRemaining}</h4>
       <button onClick={() => startGame()} disabled={isTimeRunning}>Start</button>
       <h1>Word Count: {wordCount}</h1>
