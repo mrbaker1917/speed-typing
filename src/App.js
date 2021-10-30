@@ -7,7 +7,7 @@ function App() {
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME);
   const [isTimeRunning, setIsTimeRunning] = useState(false);
   const [wordCount, setWordCount] = useState(0)
-  const textFocus = useRef()
+  const textFocus = useRef(null)
 
 
   function handleChange(e) {
