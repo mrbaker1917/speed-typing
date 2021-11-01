@@ -18,8 +18,7 @@ function App() {
 
   function countWords(text) {
     const words_arr = text.trim().split(" ");
-    const filteredWords = words_arr.filter((word) => word !== "");
-    console.log(filteredWords.length);
+    const filteredWords = words_arr.filter((word) => word !== "")
     return filteredWords.length;
   }
 
